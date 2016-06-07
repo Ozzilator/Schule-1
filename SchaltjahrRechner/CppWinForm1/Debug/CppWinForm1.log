@@ -1,0 +1,17 @@
+﻿Der Buildvorgang wurde am 09.05.2016 10:52:35 gestartet.
+     1>Projekt "H:\Visual Studio 2015\Projects\CppWinForm1\CppWinForm1\CppWinForm1.vcxproj" auf Knoten "2", Build Ziel(e).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
+         MyForm.cpp
+     1>h:\visual studio 2015\projects\cppwinform1\cppwinform1\MyForm.h(117): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
+     1>h:\visual studio 2015\projects\cppwinform1\cppwinform1\MyForm.h(130): warning C4244: "Argument": Konvertierung von "double" in "int", möglicher Datenverlust
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\Visual Studio 2015\Projects\CppWinForm1\Debug\CppWinForm1.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\CppWinForm1.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"H:\Visual Studio 2015\Projects\CppWinForm1\Debug\CppWinForm1.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\funktionen.obj
+         Debug\MyForm.obj
+         "Debug\.NETFramework,Version=v4.5.2.AssemblyAttributes.obj"
+         CppWinForm1.vcxproj -> H:\Visual Studio 2015\Projects\CppWinForm1\Debug\CppWinForm1.exe
+     1>Die Erstellung von Projekt "H:\Visual Studio 2015\Projects\CppWinForm1\CppWinForm1\CppWinForm1.vcxproj" ist abgeschlossen (Build Ziel(e)).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+
+Verstrichene Zeit 00:00:01.27
