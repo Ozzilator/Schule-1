@@ -1,0 +1,53 @@
+A51 MACRO ASSEMBLER  BIN_RER_DEZIMALZ_HLER                                                12/01/2016 06:17:01 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN .\Objects\binärer dezimalzähler.obj
+ASSEMBLER INVOKED BY: D:\Keil\C51\BIN\A51.EXE binärer dezimalzähler.a51 SET(SMALL) DEBUG PRINT(.\Listings\binärer dezima
+                      lzähler.lst) OBJECT(.\Objects\binärer dezimalzähler.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;ORG 8000h
+  00C0                 2     P4 EQU 0C0h
+                       3             
+0000 7800              4                MOV R0,#00h             ;r0 zurücksetzen
+0002 30B2FD            5     eins:      JNB P3.2,eins           ;tasterabfrage
+0005 88A0              6                MOV p2,R0               ;ausgabe von r0 nach p2
+0007 1111              7                ACALL Sekunde           ;aufruf unterprogramm sekunde
+0009 08                8                INC R0                  ;r0 um eins erhöhen
+000A B80AF5            9                CJNE R0,#0Ah, eins      ;sprung nach eins: wenn r0 ungleich 10 -->a
+                             	                            								  bbruch von programm, wenn r0 = 10
+000D 7800             10                MOV R0,#00h             ;r0 zurücksetzen
+000F 80F1             11                JMP eins                ;rücksprung nach eins
+                      12                     
+0011 7B0A             13     Sekunde:   MOV R3,#10              ;register setzen
+0013 7AC8             14     Seins:     MOV R2,#200             ;register setzen
+0015 79FA             15     Szwei:     MOV R1,#250             ;register setzen
+0017 D9FE             16     Sdrei:     DJNZ R1,Sdrei           ;schleife1
+0019 DAFA             17                DJNZ R2,Szwei           ;schleife2
+001B DBF6             18                DJNZ R3,Seins           ;schleife3
+001D 22               19                RET
+                      20     END
+
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EINS . . . . . . .  C ADDR   0002H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+P4 . . . . . . . .  N NUMB   00C0H   A   
+SDREI. . . . . . .  C ADDR   0017H   A   
+SEINS. . . . . . .  C ADDR   0013H   A   
+SEKUNDE. . . . . .  C ADDR   0011H   A   
+SZWEI. . . . . . .  C ADDR   0015H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
