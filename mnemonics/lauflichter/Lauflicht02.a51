@@ -8,7 +8,7 @@ setb C
           acall Zeit
           sjmp Start
   
-  Zeit:   mov R1,#250
+  Zeit:   mov R1,#250; 100ms break
   loop1:  mov R2,#200
   loop2:  djnz R2,loop2
           djnz R1,loop1
