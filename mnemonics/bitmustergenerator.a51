@@ -37,50 +37,57 @@ mov 01ah, #00111100b
 mov 01bh, #01111110b
 mov 01ch, #11111111b
 
+;TODO
+;-fix the the output pattern 
+;-add comments for scholz
+; the output is correct if you are only looking at the hex adresses. but the table seems to have a bug...
+
+;ALREADY WORKING
+;-time is adjustable via p1.0, p1.1, p1.2 and p1.3
 
 Warten_auf_Eingabe:		jb p1.4,Muster1
-						jb p1.5,Muster2
-						jb p1.6,Muster3
-						jb p1.7,Muster4
-						jmp Warten_auf_Eingabe
+				jb p1.5,Muster2
+				jb p1.6,Muster3
+				jb p1.7,Muster4
+				jmp Warten_auf_Eingabe
 
 Muster1:			mov r0, #09h
 abfrage1: 			mov p2,@r0
-					dec r0
-					acall sleeperino
-					cjne r0,#01h, abfrage1
-					jmp Warten_auf_Eingabe
+				dec r0
+				acall sleeperino
+				cjne r0,#01h, abfrage1
+				jmp Warten_auf_Eingabe
 
 Muster2:			mov r0,#012h
 abfrage2: 			mov p2,@r0
-					dec r0
-					acall sleeperino
-					cjne r0,#0ah, abfrage2
-					jmp Warten_auf_Eingabe
+				dec r0
+				acall sleeperino
+				cjne r0,#0ah, abfrage2
+				jmp Warten_auf_Eingabe
 
 Muster3:			mov r0,#017h
 abfrage3: 			mov p2,@r0
-					dec r0
-					acall sleeperino
-					cjne r0,#013h, abfrage3
-					jmp Warten_auf_Eingabe
+				dec r0
+				acall sleeperino
+				cjne r0,#013h, abfrage3
+				jmp Warten_auf_Eingabe
 
 Muster4:			mov r0,#01ch
 abfrage4: 			mov p2,@r0
-					dec r0
-					acall sleeperino
-					cjne r0,#018h, abfrage4
-					jmp Warten_auf_Eingabe
+				dec r0
+				acall sleeperino
+				cjne r0,#018h, abfrage4
+				jmp Warten_auf_Eingabe
 
 ;Unterprogramm Zeit 
 sleeperino:			mov a, p1
-					anl a,#00001111b
-					
-					mov r3,a
+				anl a,#00001111b
+				
+				mov r3,a
 zeit1: 				mov r1,#250
 zeit2:				mov r2,#200
 zeit3:				djnz r2,zeit3
-					djnz r1,zeit2
-					djnz r3,zeit1
-					ret
+				djnz r1,zeit2
+				djnz r3,zeit1
+				ret
 END
