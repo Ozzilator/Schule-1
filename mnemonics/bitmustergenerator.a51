@@ -43,11 +43,11 @@ Warten_auf_Eingabe:		jb p1.4,Muster1
 				jb p1.7,Muster4
 				jmp Warten_auf_Eingabe
 
-Muster1:			mov r0, #09h
+Muster1:			mov r0,#09h
 abfrage1: 			mov p2,@r0
 				dec r0
 				acall sleeperino
-				jne r0,#01h, abfrage1
+				cjne r0,#01h, abfrage1
 				jmp Warten_auf_Eingabe
 
 Muster2:			mov r0,#012h
@@ -72,7 +72,7 @@ abfrage4: 			mov p2,@r0
 				jmp Warten_auf_Eingabe
 
 ;Unterprogramm Zeit 
-sleeperino:			mov a, p1
+sleeperino:			mov a,p1
 				anl a,#00001111b
 					
 				mov r3,a
