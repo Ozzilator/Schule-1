@@ -1,80 +1,82 @@
+;Author: Felix Zimmermann // Niklas Gauder
+;Name:   Bitmustergenerator
+
 ;ORG 8000h
 P4 EQU 0C0h
 
-;Muster1			dieses muster funktioniert nicht
-mov 001h, #00000000b
-mov 002h, #11111111b
-mov 003h, #01111111b
-mov 004h, #00111111b
-mov 005h, #00011111b
-mov 006h, #00001111b
-mov 007h, #00000111b
-mov 008h, #00000011b
-mov 009h, #00000001b
+;Muster1				Tabelle für Bitmuster
+mov 01Dh, #00h		
+mov 01Eh, #0FFh		
+mov 01Fh, #7Fh		
+mov 020h, #3Fh	
+mov 021h, #1Fh		
+mov 022h, #0Fh		
+mov 023h, #07h
+mov 024h, #03h
+mov 025h, #01h
 
-;Muster2			dieses muster funktioniert
-mov 00ah, #00000000b
-mov 00bh, #11111111b
-mov 00ch, #11111110b
-mov 00dh, #11111100b
-mov 00eh, #11111000b
-mov 00fh, #11110000b
-mov 010h, #11100000b
-mov 011h, #11000000b
-mov 012h, #10000000b
+;Muster2
+mov 026h, #00h
+mov 027h, #0FFh
+mov 028h, #0FEh
+mov 029h, #0FCh
+mov 02ah, #0F8h
+mov 02bh, #0F0h
+mov 02ch, #0E0h
+mov 02dh, #0C0h
+mov 02eh, #80h
 
-;Muster3			dieses muster funktioniert nicht
-mov 013h, #00000000b
-mov 014h, #11111111b
-mov 015h, #00111100b
-mov 016h, #00111100b
-mov 017h, #00011000b
+;Muster3
+mov 02fh, #00h
+mov 030h, #0FFh
+mov 031h, #7Eh
+mov 032h, #3Ch
+mov 033h, #18h
 
-;Muster4			dieses muster funktioniert
-mov 018h, #00000000b
-mov 019h, #00011000b
-mov 01ah, #00111100b
-mov 01bh, #01111110b
-mov 01ch, #11111111b
-
-Warten_auf_Eingabe:		jb p1.4,Muster1
+;Muster4
+mov 034h, #00h
+mov 035h, #18h
+mov 036h, #3Ch
+mov 037h, #7Eh
+mov 038h, #0FFh
+Warten_auf_Eingabe:		jb p1.4,Muster1			;oder-Abfrage der Muster
 				jb p1.5,Muster2
 				jb p1.6,Muster3
 				jb p1.7,Muster4
 				jmp Warten_auf_Eingabe
 
-Muster1:			mov r0,#09h
-abfrage1: 			mov p2,@r0
-				dec r0
-				acall sleeperino
-				cjne r0,#01h, abfrage1
-				jmp Warten_auf_Eingabe
+Muster1:			mov r0,#025h			; r0 mit dem höchsten wert des tabellenabschnittes laden
+abfrage1: 			mov p2,@r0			; bitmuster an p2 ausgeben
+				dec r0				; um einen tabellenplatz verringern
+				acall sleep			; sleep
+				cjne r0,#01Dh,abfrage1		; abfrage ob tabellenende
+				jmp Warten_auf_Eingabe		; zurück zu oderauswahl springen
 
-Muster2:			mov r0,#012h
+Muster2:			mov r0,#02eh
 abfrage2: 			mov p2,@r0
 				dec r0
-				acall sleeperino
-				cjne r0,#0ah, abfrage2
+				acall sleep
+				cjne r0,#026h,abfrage2
 				jmp Warten_auf_Eingabe
 
-Muster3:			mov r0,#017h
+Muster3:			mov r0,#033h
 abfrage3: 			mov p2,@r0
 				dec r0
-				acall sleeperino
-				cjne r0,#013h, abfrage3
+				acall sleep
+				cjne r0,#02fh,abfrage3
 				jmp Warten_auf_Eingabe
 
-Muster4:			mov r0,#01ch
+Muster4:			mov r0,#038h
 abfrage4: 			mov p2,@r0
 				dec r0
-				acall sleeperino
-				cjne r0,#018h, abfrage4
+				acall sleep
+				cjne r0,#034h,abfrage4
 				jmp Warten_auf_Eingabe
 
 ;Unterprogramm Zeit 
-sleeperino:			mov a,p1
+sleep:				mov a,p1
 				anl a,#00001111b
-					
+				
 				mov r3,a
 zeit1: 				mov r1,#250
 zeit2:				mov r2,#200
