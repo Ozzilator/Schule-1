@@ -2,19 +2,18 @@
 #include <stdlib.h>
 #include "Car.h"
 
-Car::Car()
+Car::Car(int tortx, int torty, int tsize, int tspeed, Color tfarbe)
 {
-	farbe = Color::Red;
-	size = 150;
-	ortx = 175;
-	orty = 50;
-	delta = 0;
-
+	farbe = tfarbe;
+	size = tsize;
+	ortx = tortx;
+	orty = torty;
+	speed = tspeed;
 }
 
-void Car::draw(Graphics ^c/*, int ortx, int orty, int size*/)
+void Car::draw(Graphics ^c)
 {
-	Brush^ b = gcnew SolidBrush(Color::Red);
+	Brush^ b = gcnew SolidBrush(farbe);
 	Pen^ p = gcnew Pen(Color::Black, 3);
 	SolidBrush^ whiteBrush = gcnew SolidBrush(Color::White);
 	SolidBrush^ blackBrush = gcnew SolidBrush(Color::Black);
@@ -45,16 +44,16 @@ void Car::draw(Graphics ^c/*, int ortx, int orty, int size*/)
 	c->FillEllipse(silverBrush, x5 - r, y2 - r, r * 2, r * 2);
 }
 
-void Car::drive(int delta)
+void Car::drive(int delta, long double width)
 {
-	ortx = ortx + delta;
-	if (ortx > 550)
+	ortx = ortx + delta * speed;
+	if (ortx > width)
 	{
-		ortx = -150;
+		ortx = - size;
 	}
 
-	if (ortx < -150)
+	if (ortx < - size)
 	{
-		ortx = 550;
+		ortx = width;
 	}
 }
