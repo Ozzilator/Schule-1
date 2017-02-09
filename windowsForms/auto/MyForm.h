@@ -17,11 +17,13 @@ namespace Auto {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		Car^ myCar;
+		Car^ myCar1;
+		Car^ myCar2;
 		MyForm(void) /*Konstruktor*/
 		{
 			InitializeComponent();
-			myCar = gcnew Car();
+			myCar1 = gcnew Car(175, 50, 150, -1, Color::Red); /*ortx, orty, size, speed, Color farbe*/
+			myCar2 = gcnew Car(200, 150, 100, 3, Color::Blue);
 			//
 			//TODO: Add the constructor code here
 			//
@@ -77,7 +79,7 @@ namespace Auto {
 			this->trackBar1->Maximum = 50;
 			this->trackBar1->Minimum = -50;
 			this->trackBar1->Name = L"trackBar1";
-			this->trackBar1->Size = System::Drawing::Size(510, 45);
+			this->trackBar1->Size = System::Drawing::Size(555, 45);
 			this->trackBar1->SmallChange = 5;
 			this->trackBar1->TabIndex = 2;
 			this->trackBar1->Scroll += gcnew System::EventHandler(this, &MyForm::trackBar1_Scroll);
@@ -86,7 +88,7 @@ namespace Auto {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(534, 262);
+			this->ClientSize = System::Drawing::Size(579, 262);
 			this->Controls->Add(this->trackBar1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
@@ -107,12 +109,14 @@ namespace Auto {
 	private: System::Void MyForm_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e)
 	{
 		//myCar -> draw(e->Graphics, 0, 0, 0);
-		myCar->draw(e->Graphics);
+		myCar1->draw(e->Graphics);
+		myCar2->draw(e->Graphics);
 	}
 	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) 
 	{
 		this->timer1->Enabled = true;
-		myCar->drive(trackBar1->Value);
+		myCar1->drive(trackBar1->Value, Width);
+		myCar2->drive(trackBar1->Value, Width);
 		Refresh();
 	}
 	private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e)
