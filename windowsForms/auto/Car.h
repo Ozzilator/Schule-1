@@ -8,9 +8,11 @@ ref class Car
 		int ortx;
 		int orty;
 		int size;
+		int delta;
+	
 	/*Methoden*/
 		Car();
-		void draw(Graphics ^c, int ortx, int orty, int size);
-		void drive();
+		void draw(Graphics ^c/*, int ortx, int orty, int size*/);
+		void drive(int delta);
 };
 
