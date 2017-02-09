@@ -6,12 +6,13 @@ Car::Car()
 {
 	farbe = Color::Red;
 	size = 150;
-	ortx = 50;
+	ortx = 175;
 	orty = 50;
+	delta = 0;
 
 }
 
-void Car::draw(Graphics ^c, int ortx, int orty, int size)
+void Car::draw(Graphics ^c/*, int ortx, int orty, int size*/)
 {
 	Brush^ b = gcnew SolidBrush(Color::Red);
 	Pen^ p = gcnew Pen(Color::Black, 3);
@@ -44,7 +45,16 @@ void Car::draw(Graphics ^c, int ortx, int orty, int size)
 	c->FillEllipse(silverBrush, x5 - r, y2 - r, r * 2, r * 2);
 }
 
-void Car::drive()
+void Car::drive(int delta)
 {
+	ortx = ortx + delta;
+	if (ortx > 550)
+	{
+		ortx = -150;
+	}
 
+	if (ortx < -150)
+	{
+		ortx = 550;
+	}
 }
