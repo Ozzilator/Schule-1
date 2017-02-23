@@ -12,15 +12,15 @@ mov 57h,#01h
 
 start:		mov r0,#50h
 start1:		mov p4,@r0
-			    acall zeit
-			    inc r0
-			    cjne r0,#57h,start1
-			    jmp start
+		acall zeit
+		inc r0
+		cjne r0,#57h,start1
+		jmp start
 
 
-zeit:		  mov r1,#250		; 100ms time loop
+zeit:		mov r1,#250		; 100ms time loop
 loop1:		mov r2,#100
 loop2:		djnz r2,loop2
-			    djnz r1,loop1
-			    ret
+		djnz r1,loop1
+		ret
 END
