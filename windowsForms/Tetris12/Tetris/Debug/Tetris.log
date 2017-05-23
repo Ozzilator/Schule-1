@@ -1,0 +1,4 @@
+﻿cl : Befehlszeile warning D9035: Die Option "clr:pure" ist veraltet und wird in einer der nächsten Versionen entfernt.
+  Symbol_Master.cpp
+  Tetris.vcxproj -> E:\coding\c++\Tetris12\Debug\Tetris.exe
+  Tetris.vcxproj -> E:\coding\c++\Tetris12\Debug\Tetris.pdb (Full PDB)
