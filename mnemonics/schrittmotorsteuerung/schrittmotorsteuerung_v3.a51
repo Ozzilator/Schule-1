@@ -10,40 +10,31 @@ start:      mov a,#00h
 		        jmp start
 		
 halb:	      mov dptr,#tabelle_halb
+jmp ausgabe_07
+halb_links: mov dptr,#tabelle_halb_links
+jmp ausgabe_07
+ganz:	      mov dptr,#tabelle_ganz
+jmp ausgabe_04
+ganz_links:	mov dptr,#tabelle_ganz_links
+jmp ausgabe_04
+
+ausgabe_07:
 		        mov a,r0
 		        movc a,@a+dptr
 		        mov p1,a
 		        inc r0
 		        acall zeit
-		        cjne r0,#07h,halb
+		        cjne r0,#07h,ausgabe_07
 		        jmp start
 
-halb_links: mov dptr,#tabelle_halb_links
+ausgabe_04:
 		        mov a,r0
 		        movc a,@a+dptr
 		        mov p1,a
 		        inc r0
 		        acall zeit
-		        cjne r0,#07h,halb_links
-		        jmp start	
-
-ganz:	      mov dptr,#tabelle_ganz
-		        mov a,r0
-		        movc a,@a+dptr
-		        mov p1,a
-		        inc r0
-		        acall zeit
-		        cjne r0,#04h,ganz
-		        jmp start		
-
-ganz_links:	mov dptr,#tabelle_ganz_links
-		        mov a,r0
-		        movc a,@a+dptr
-		        mov p1,a
-		        inc r0
-		        acall zeit
-		        cjne r0,#04h,ganz_links
-		        jmp start	
+		        cjne r0,#04h,ausgabe_04
+		        jmp start
 
 tabelle_halb:	DB 09h,08h,0Ah,02h,06h,04h,05h,01h
 tabelle_ganz:	DB 09h,0Ah,06h,05h		
